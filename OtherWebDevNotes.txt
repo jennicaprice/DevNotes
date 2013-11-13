@@ -1,0 +1,128 @@
+10.02.13
+<!--Displaying TRUSTe privacy policy-->
+<script type="text/javascript">
+	function iFrameHeight() {
+		var h = 0;
+		if (!document.all) {
+			h = document.getElementById('blockrandom').contentDocument.height;
+			document.getElementById('blockrandom').style.height = h + 60 + 'px';
+		} else if (document.all) {
+			h = document.frames('blockrandom').document.body.scrollHeight;
+			document.all.blockrandom.style.height = h + 20 + 'px';
+		}
+	}
+</script>
+
+<iframe id="blockrandom" src="https://privacy.truste.com/reseller/privacy-policy/Wesco-Nutrition/certified/f3d29fbd-cd83-42fe-bf9c-e62d21eb137f" title="Privacy Policy by TRUSTe" width="100%" height="950px" scrolling="none" style="overflow: hidden;"><p>Your browser does not support iFrames.</p></iframe>
+
+10.03.13
+<!--Dropdown menu onclick-->
+<style>
+.mobile-share-button {
+  border: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../images/webicons/share-icon.png") no-repeat;
+  vertical-align: middle;
+  float: right;
+  margin-top: -15px;
+}
+
+#mobile-share {
+  display: none;
+  width: 100px;
+  height: 50px;
+  position: relative;
+  float: right;
+  margin-top: 10px;
+}
+
+ul.mobile-share-menu {
+  list-style-type: none;
+}
+
+ul.mobile-share-menu li {
+  padding: 10px;
+}
+
+ul.mobile-share-menu a {
+  color: #FFFFFF;
+}
+</style>
+
+		<script>
+		function dropdown() {
+		  if(document.getElementById('mobile-share').style.display=='block'){
+                  document.getElementById('mobile-share').style.display='none';
+           	  }
+           	  else{ 
+                  document.getElementById('mobile-share').style.display='block';
+           	  }
+       	}
+		</script>
+
+		<button class="mobile-share-button" onclick="dropdown()">
+		<div id="mobile-share">
+              <ul class="mobile-share-menu">
+                <li><a href="/">Share</a></li>
+              </ul>
+	      </div>
+
+<!--End dropdown menu-->
+
+10.14.13
+#htaccess: rewriting http://(URL)/index.php?/(MOREURL)
+RewriteCond %{QUERY_STRING} ^/(.*)$ 
+RewriteRule ^(.*)$ /$1/%1? [R=301,L,NE]
+
+10.15.13
+// jQuery: create hidden form and submit by clicking on element
+$( 'body.home #avinode-availability table tr' ).each( function() {
+	$( this ).click(function() {
+		//alert("Please visit the Contact Us page to submit a quote request.");
+		$( '<form method="post" action="/contact/" enctype="multipart/form-data"><input class="from-airport" type="hidden" name="from-airport"><input class="to-airport" type="hidden" name="to-airport"><input class="go-date" type="hidden" name="go-date"><input readonly="readonly"></form>' ).appendTo('body').submit();
+	});
+});
+
+11.11.13
+<!--CSS rollover images on Vitopian.com-->
+
+<style>
+.innerpage .teamArea { float: right; margin-left: 0 !important; margin-right: 30px !important; margin-top: 60px !important; width: 911px !important; }
+.teamArea ul { margin:0; padding:0; width: 40%; float: left;}
+.teamArea ul li { position:relative; margin-left: 0px; margin-right:17px; margin-bottom: 5px; float:left; list-style:none; background:url("../images/thumbnail-shadow.gif") no-repeat scroll right bottom transparent; #width:90px; padding-bottom:9px; }
+.teamArea ul li span { position: absolute; left: -9999px; }
+.teamArea ul li span img { border-radius: 9px; }
+.teamArea ul li strong { font-size:24px; font-weight:bold; color:#1c628f; margin-bottom:20px; }
+.teamArea ul li a { color:#333333; #border:1px solid #bfbfbf; float:left; height: 100px; #width: 100px; border-radius: 9px; display: inline-block; }
+.teamArea ul li a img { height:100px; width:100px; border-radius:9px; border:0; }
+.teamArea ul li a:hover strong, .teamArea ul li a:hover .position { color:#FFF!important; }
+li.ryank a { background: url("../images/ryan-profile.png") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.ryank:hover span { top: 114px; left: 0px; z-index: 50; }
+li.jenm a { background: url("../images/Jen-profile.png") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.jenm:hover span { top: 114px; left: 0px; z-index: 50; }
+li.dannyu a { background: url("../images/danny-profile.jpg") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.dannyu:hover span { top: 114px; left: -117px; z-index: 50; }
+li.stephaniey a { background: url("../images/stephanie-profile.jpg") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.stephaniey:hover span { top: -114px; left: 0px; z-index: 50; }
+li.kevina a { background: url("../images/kevin-profile.png") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.kevina:hover span { top: -114px; left: 0px; z-index: 50; }
+li.chadl a { background: url("../images/Chad-profile.png") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.chadl:hover span { top: -114px; left: -117px; z-index: 50; }
+li.jennib a { background: url("../images/Jenni-profile.png") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.jennib:hover span { top: -114px; left: 0px; z-index: 50; }
+li.mrpanda a { background: url("../images/mrpanda.jpg") no-repeat scroll center 0px; background-color:#E3E3E3; background-size: 100% 100%; width:100px; }
+li.mrpanda:hover span { top: -114px; left: 0px; z-index: 50; }
+</style>
+
+<ul>
+<li class="ryank"><a href="index.php?option=com_content&amp;view=article&amp;id=43"></a><span><img src="/templates/vitopian/images/hover-ryan.png" /></span></li>
+<li class="jenm"><a href="index.php?option=com_content&amp;view=article&amp;id=44"></a><span><img src="/templates/vitopian/images/hover-jen.png" /></span></li>
+<li class="dannyu"><a href="index.php?option=com_content&amp;view=article&amp;id=33"></a><span><img src="/templates/vitopian/images/hover-danny.png" /></span></li>
+<li class="stephaniey"><a href="index.php?option=com_content&amp;view=article&amp;id=52"></a><span><img src="/templates/vitopian/images/hover-steph.png" /></span></li>
+<li class="kevina"><a href="index.php?option=com_content&amp;view=article&amp;id=48"></a><span><img src="/templates/vitopian/images/hover-kevin.png" /></span></li>
+<li class="chadl"><a href="index.php?option=com_content&amp;view=article&amp;id=49"></a><span><img src="/templates/vitopian/images/hover-chad.png" /></span></li>
+<li class="jennib"><a href="index.php?option=com_content&amp;view=article&amp;id=50"></a><span><img src="/templates/vitopian/images/hover-jenni.png" /></span></li>
+<li class="mrpanda"><a href="index.php?option=com_content&amp;view=article&amp;id=47"></a><span><img src="/templates/vitopian/images/hover-panda.png" /></span></li>
+</ul>

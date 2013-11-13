@@ -1,0 +1,104 @@
+09.26.13
+//Get an image object and output it (WP ACF plugin):
+$image = get_field('jet_image'); //get jet_image object
+var_dump($image);  //show EVERYTHING
+$image_src = $image['url']; //assign variable to URL from image object
+$alt_text = $image['alt']; //assign variable to alt property from image object
+echo '<img src="' . $image_src . '" alt="' . $alt_text . '" />'; //display
+
+//Get image subfield in ACF object and output it:
+<?php 
+  $rows = get_field('jet_image2');
+  if($rows) {
+    echo '<ul class="large-block-grid-2">';
+    foreach($rows as $row) {
+      $image = $row['jet_image2_image'];
+	  $alt_text = $image['alt'];
+	  $image_src = $image['url'];
+      echo '<li><img src="' . $image_src . '" alt="' . $alt_text . '" /></li>';
+    }
+  echo '</ul>';
+  }
+?>
+
+09.27.13
+//Get referring page, populate Gravity Forms dropdown accordingly
+add_filter("gform_pre_render", "populate_dropdown");
+add_filter("gform_admin_pre_render", "populate_dropdown");
+
+function populate_dropdown($form){
+  if($form['id'] != 6)
+    return $form;
+
+  //Retrieve referring page
+  $referring_page = wp_get_referer();
+  //echo $referring_page;
+
+  /*Output each field in the form array, set the field you want, set the value for that field conditionally (grabbing domain dynamically)*/
+  foreach($form["fields"] as &$field) {
+    $dept_field = 1;
+    if($field['id'] == $dept_field && $referring_page == "http://" . $_SERVER['HTTP_HOST'] . "/aviation-services/") {
+      $field['defaultValue'] = "Jet Sales";
+	//See ALL THE THINGS
+	//var_dump($field);
+    }
+	//Just making sure the ID was being recognized
+    //$boolean_id = ($field['id'] == $dept_field);
+    //echo $boolean_id;
+  }
+
+  //Just making sure the referrer was being recognized
+  //$boolean_referrer = ($referring_page == "http://presidentialprivatejet.com/aviation-services/");
+  //$boolean_referrer = ($referring_page == "http://" . $_SERVER['HTTP_HOST'] . "/aviation-services/");
+  //echo $boolean_referrer;
+  //echo $_SERVER['HTTP_HOST'] . "/aviation-services/";
+
+  return $form;
+}
+
+10.08.13
+//Insert Fleet page into WP SEO breadcrumbs
+global $fleet_page_id;
+$fleet_page_id = 51;
+global $wp_query, $post;
+$post->post_parent = $fleet_page_id;
+
+if ( function_exists('yoast_breadcrumb') ) {
+  yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+} 
+
+10.30.13
+//Output breadcrumbs on Search page based on post type
+<?php 
+
+  if ( 'jet' == get_post_type() ) { ?>
+    <a href="/">Home </a>&gt;<a href="/charter-jet-categories/"> Jets </a>&gt;<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a>
+  <?php } elseif ( 'fleet' == get_post_type() ) { ?>
+    <a href="/">Home </a>&gt;<a href="/private-jet-fleet/"> Our Fleet </a>&gt;<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a>
+  <?php } elseif ( 'post' == get_post_type() ) { 
+    $categories = get_the_category();
+    //var_dump($post_category);
+    if($categories){
+      foreach($categories as $category) {
+        $category_tax = $category->taxonomy;
+        $category_slug = $category->slug;
+        $category_name = $category->name;
+        //echo $category_name;
+      }
+    }
+  ?>
+    <a href="/">Home </a>&gt;<a href="/blog/"> Blog </a>&gt;<a href="/<?php echo $category_tax; ?>/<?php echo $category_slug; ?>"><?php echo $category_name; ?> </a>&gt;<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a>
+  <?php } else { ?>
+    <a href="/">Home </a>&gt;
+    <?php
+    $ancestors = get_post_ancestors($post);
+    foreach ($ancestors as $ancestor) {
+      $ancestor_title = get_the_title($ancestor);
+      $ancestor_link = get_permalink($ancestor)
+    ?>
+      <a href="<?php echo $ancestor_link; ?>"><?php echo $ancestor_title; ?> </a>&gt;
+    <?php } ?>
+    <a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?></a>
+  <?php }
+
+?>

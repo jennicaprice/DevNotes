@@ -1,0 +1,81 @@
+09.27.13
+/* Styles for screens that are at least 770px (since iPads are 768px wide) */
+@media only screen and (min-width: 770px) {
+  (class) {
+	(property);
+  }
+}
+
+/* Small screens (iPad width = 768px) */
+@media (max-width:768px) {
+  .page-footer .logo-footer {
+    margin: 0px;
+  }
+}
+
+/* Very small screens (width of many popular smartphones = 720px) */
+@media (max-width:720px) {
+  .quote-bottom-widget {
+    display: none;
+  }
+}
+
+/* Make top nav item unclickable only if it has a dropdown menu*/
+.top-bar-section .right .has-dropdown a {
+  pointer-events: none;
+}
+
+.top-bar-section .right .dropdown a {
+  pointer-events: auto;
+}
+
+09.30.13
+/* Make SVG object clickable */
+<div class="header-logo">
+     <a id="homelink-header-one" href="/">
+	<!--[if !IE]>-->
+	  <object class="logo-object" data="/images/branding/presidential-logo.svg" type="image/svg+xml"
+      		width="114" height="100" id="logo"> <!--<![endif]-->
+	<!--[if lt IE 9]>
+	  <object class="logo-object" src="/images/branding/presidential-logo.svg" classid="image/svg+xml"
+      		width="114" height="100" id="logo"> <![endif]-->
+	<!--[if gte IE 9]>
+	  <object class="logo-object" data="/images/branding/presidential-logo.svg" type="image/svg+xml"
+      		width="114" height="100" id="logo"> <![endif]-->
+	  <p>Presidential logo</p>
+	  </object>
+  </a>
+</div>
+
+	<style>
+.header-logo {
+  width: 114px;
+  height: 100px;
+  z-index: 1;
+  position: relative;
+}
+
+.header-logo a {
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  curser: pointer;
+}
+
+.header-logo .logo-object {
+  z-index: -1;
+  position: relative;
+}
+	</style>
+
+10.10.13
+fix image slider not displaying in Safari:
+	.es-carousel ul li (line 22) {
+		#height: 100%;
+		height: 80px;
+	}
+	.rg-image img (line 15) {
+		#max-height: 75%;
+		max-height: 700px;
+	}
