@@ -119,7 +119,6 @@ if ( function_exists('yoast_breadcrumb') ) {
   <?php }
 
 02.01.14
-
 //Enqueue script, pass variables to it
 function special_enqueue_scripts() {
   wp_enqueue_script( 'app', get_template_directory_uri() . '/js/app.js', array( 'jquery' ), '1.1.2', true );
